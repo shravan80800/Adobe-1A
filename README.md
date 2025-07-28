@@ -1,6 +1,6 @@
 # 🧠 PDF Outline Extractor & Classifier
 
-> Extracts structured outlines (Title, H1, H2, H3, Other) from PDFs using multilingual sentence embeddings and XGBoost — **fully offline, Docker-ready, and easy to use**.
+> Extracts structured outlines (Title, H1, H2, H3, Other) from PDFs using multilingual sentence embeddings and XGBoost — fully offline, Docker-ready, and easy to use.
 
 <p align="center">
   <img src="https://img.shields.io/badge/Offline--Ready-✅-brightgreen" />
@@ -13,11 +13,11 @@
 
 ## ✨ Features
 
-- ✅ **Multilingual** sentence embedding model (`paraphrase-multilingual-MiniLM`)
-- 🔢 **Heading hierarchy prediction** (Title, H1, H2, H3, Other) via XGBoost
-- 🐳 **Docker-ready** — run in one command
-- 📦 **Pretrained model included** — no internet needed
-- 📤 **Structured JSON output** for easy integration
+- ✅ Multilingual sentence embedding model (paraphrase-multilingual-MiniLM)
+- 🔢 Heading hierarchy prediction (Title, H1, H2, H3, Other) via XGBoost
+- 🐳 Docker-ready — run in one command
+- 📦 Pretrained model included — no internet needed
+- 📤 Structured JSON output for easy integration
 
 ---
 
@@ -53,15 +53,17 @@
 docker build -t pdf-outline .
 ```
 
-### 📥 Step 2: Place PDFs in `input/` Folder
+### 📥 Step 2: Place PDFs in input/ Folder
 ```bash
 cp your_pdfs/*.pdf input/
 ```
 
-### ▶️ Step 3: Run the Pipeline
+### ▶ Step 3: Run the Pipeline
 ```bash
 docker run --rm -v $(pwd)/input:/app/input -v $(pwd)/output:/app/output pdf-outline
 ```
+
+✅ Input pdfs should be given in `*/Input*` directory
 
 ✅ Output will be saved to `output/` folder in JSON format.
 
@@ -92,8 +94,11 @@ python main.py
 
 ## 🧠 Model Info
 
-- ✨ Embedding Model: `paraphrase-multilingual-MiniLM-L12-v2`
-- 🔍 Classifier: `XGBoost` trained to detect hierarchy (Title → H3)
+> ⚠️ **Note:** The `paraphrase-multilingual-MiniLM-L12-v2` model is known to **crash on some systems due to memory issues**.  
+> ✅ To ensure stability, a zipped backup (`model_backup.zip`) is already provided inside the `model/` directory for recovery.
+
+- ✨ Embedding Model: paraphrase-multilingual-MiniLM-L12-v2  
+- 🔍 Classifier: XGBoost trained to detect hierarchy (Title → H3)  
 - 📁 Stored offline inside `model/` directory
 
 ### 💾 Model Recovery
@@ -143,6 +148,7 @@ Example structured output:
 
 ### Step 1: Prepare CSV File
 Example: `sample_training_data.csv`
+
 | text         | font_size | bold | italic | y_position | page_number | label |
 |--------------|-----------|------|--------|------------|-------------|-------|
 | Introduction | 18        | 1    | 0      | 125.5      | 0           | H1    |
@@ -171,14 +177,14 @@ python predict_outline.py
 
 ## ⚙ Utility Scripts
 
-### `utils/classifier.py`
+### utils/classifier.py
 ```python
 def classify_headings(lines, model_path, clf_path):
     # Accepts line features (layout, font, embedding)
     # Returns predicted heading labels
 ```
 
-### `utils/postprocess.py`
+### utils/postprocess.py
 ```python
 def build_outline_json(filename, lines, predictions):
     # Builds a nested JSON structure based on heading levels
@@ -188,7 +194,7 @@ def build_outline_json(filename, lines, predictions):
 
 ## 🐳 Minimal Dockerfile
 
-```dockerfile
+```Dockerfile
 FROM python:3.10-slim
 
 WORKDIR /app
