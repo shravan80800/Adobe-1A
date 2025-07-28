@@ -207,23 +207,10 @@ CMD ["python", "main.py"]
 
 ---
 
-## 📃 License
-
-This project is licensed under the [MIT License](LICENSE).
-
----
-
 ## 🙌 Credits
 
 - 🧠 [SentenceTransformers](https://www.sbert.net/)
 - 🌲 [XGBoost](https://xgboost.ai/)
 - 📄 [PyMuPDF](https://pymupdf.readthedocs.io/)
-
----
-
-## 💬 Feedback & Contributions
-
-Found a bug? Have an idea?  
-👉 [Open an Issue](https://github.com/your-repo/issues) or submit a Pull Request!
 
 ---
