@@ -1,0 +1,8 @@
+pandas
+xgboost
+numpy
+sentence-transformers
+PyMuPDF
+langdetect
+scikit-learn
+nltk
