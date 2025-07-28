@@ -95,7 +95,7 @@ python main.py
 ## 🧠 Model Info
 
 > ⚠️ **Note:** The `paraphrase-multilingual-MiniLM-L12-v2` model is known to **crash on some systems due to memory issues**.  
-> ✅ To ensure stability, a zipped backup (`model_backup.zip`) is already provided inside the `model/` directory for recovery.
+> ✅ To ensure stability, a zipped backup (`paraphrase-multilingual-MiniLM-L12-v2.zip`) is already provided inside the `model/` directory for recovery.
 
 - ✨ Embedding Model: paraphrase-multilingual-MiniLM-L12-v2  
 - 🔍 Classifier: XGBoost trained to detect hierarchy (Title → H3)  
